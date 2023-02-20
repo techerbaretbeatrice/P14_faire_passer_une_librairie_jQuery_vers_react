@@ -1,0 +1,26 @@
+.research-container {
+    display: flex;
+    flex-direction: row;
+    width: 18%;
+    justify-content: space-evenly;
+}
+
+.label-container {
+    margin-top: 3px;
+}
+
+.edit-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.edit-container svg {
+    position: absolute;
+    right: 10px;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+}

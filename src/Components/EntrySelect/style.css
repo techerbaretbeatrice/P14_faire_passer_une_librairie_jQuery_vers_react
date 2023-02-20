@@ -1,0 +1,19 @@
+.entry-select-container {
+    display: flex;
+    flex-direction: row;
+    width: 18%;
+    justify-content: space-between;
+}
+
+.text-before {
+    display: flex;
+    align-items: flex-start;
+}
+
+.entry-values {
+    width: 100px;
+}
+
+.a {
+    height: 30px;
+}

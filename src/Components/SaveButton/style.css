@@ -1,0 +1,15 @@
+.submit-button {
+    border: none;
+    background-color: var(--PRIMARY-600);
+    width: 150px;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    background-color: var(--PRIMARY-600);
+}
+
+.submit-button:hover {
+    background-color: var(--PRIMARY);
+}

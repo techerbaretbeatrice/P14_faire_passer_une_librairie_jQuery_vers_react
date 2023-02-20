@@ -1,43 +1,53 @@
+import DataTable from "../../Components/DataTable"
 import Header from "../../Components/Header"
+import Search from "../../Components/Search"
+import EntrySelect from "../../Components/EntrySelect"
 import "./style.css"
 
 const EmployeeListPage = () => {
+    const data = {
+        "employee": [
+            {
+                "nom": "pierre",
+                "age": 15,
+                "id": 0,
+
+            },
+
+            {
+                "nom": "jean",
+                "age": 12,
+                "id": 1,
+
+            },
+            {
+                "nom": "marc",
+                "age": 16,
+                "id": 2,
+
+            },
+
+        ],
+    }
+
     return <div>
         <Header />
         <main>
             <div className="title">
                 Current Employee
             </div>
-            <div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Start Date</th>
-                            <th>Department</th>
-                            <th>Date of Birth</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>Zip Code</th>
-                            <th>State</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>techer</td>
-                            <td>beatrice</td>
-                            <td>02/01/2022</td>
-                            <td>marketing</td>
-                            <td>17/17/1977</td>
-                            <td>5 rue de la croix au chat</td>
-                            <td>saint-brieuc</td>
-                            <td>22000</td>
-                            <td>France</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div className="entry-parameter">
+                <EntrySelect textBefore="Show" textAfter="entries" />
+                <Search engineLabel=" search:" />
             </div>
+
+            <DataTable
+                headerLabelList={["nom", "age", "adresse"]}
+                tableList={Array.from(data.employee)}
+                propertyList={["jean", 12, "5 rue de vienne", "2", "3"]}
+            />
+
+
         </main>
     </div>
 
