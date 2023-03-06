@@ -1,9 +1,10 @@
 import Header from "../../Components/Header"
-import SaveButton from "../../Components/SaveButton"
 import Form from "../../Components/Form"
 import "./style.css"
 
 const HomePage = () => {
+
+
     return <div>
         <Header />
         <main>
@@ -11,7 +12,7 @@ const HomePage = () => {
                 Create Employee
             </div>
             <Form />
-            <SaveButton actionOnClick="Save" />
+
         </main>
     </div>
 }

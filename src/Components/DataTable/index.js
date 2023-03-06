@@ -1,7 +1,10 @@
+
 import "./style.css"
 
+const Row = ({ row, keys }) => keys.map((key) => <div key={key}>{row[key]}</div>)
+
 const DataTable = (props) => {
-    const { headerLabelList, tableList, propertyList } = props
+    const { headerLabelList, tableList } = props
     console.log(tableList)
     return <div className="data-table">
         <div className="table">
@@ -17,7 +20,7 @@ const DataTable = (props) => {
                 {
                     tableList.map(
                         (item, index) => (<div className="body-table-row" key={`${item}-${index}`}>
-                            {propertyList.map((item, index) => (<div className="row-cell" key={`${item}-${index}`}>{item}</div>))}
+                            <Row row={item} keys={headerLabelList}></Row>
                         </div>)
                     )
 

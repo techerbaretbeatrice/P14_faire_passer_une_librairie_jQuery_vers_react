@@ -1,12 +1,16 @@
 
 import './App.css';
+import { DataProvider } from './Context';
 import Router from './Router';
 
 function App() {
   return (
-    <div className="App">
-      <Router />
-    </div>
+    <DataProvider>
+      <div className="App">
+        <Router />
+      </div>
+
+    </DataProvider>
   );
 }
 

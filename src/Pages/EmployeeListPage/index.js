@@ -3,32 +3,11 @@ import Header from "../../Components/Header"
 import Search from "../../Components/Search"
 import EntrySelect from "../../Components/EntrySelect"
 import "./style.css"
+import { useContext } from "react"
+import { DataContext } from "../../Context"
 
 const EmployeeListPage = () => {
-    const data = {
-        "employee": [
-            {
-                "nom": "pierre",
-                "age": 15,
-                "id": 0,
-
-            },
-
-            {
-                "nom": "jean",
-                "age": 12,
-                "id": 1,
-
-            },
-            {
-                "nom": "marc",
-                "age": 16,
-                "id": 2,
-
-            },
-
-        ],
-    }
+    const { list } = useContext(DataContext)
 
     return <div>
         <Header />
@@ -42,9 +21,8 @@ const EmployeeListPage = () => {
             </div>
 
             <DataTable
-                headerLabelList={["nom", "age", "adresse"]}
-                tableList={Array.from(data.employee)}
-                propertyList={["jean", 12, "5 rue de vienne", "2", "3"]}
+                headerLabelList={["firstname", "lastname", "dateofbirth", "startdate", "street", "city", "state", "zipcode", "department"]}
+                tableList={list}
             />
 
 

@@ -46,7 +46,7 @@ const Select = (props) => {
                     onClick={() => setInEdit(!inEdit)}>
                     {value}
                 </button>
-                <input value={value} type="hidden" name={`${props.name ? props.name : 'select-value'}`} />
+                <input value={value} type="hidden" name={`${selectorLabel}`} />
                 <Arrow onClick={() => setInEdit(!inEdit)} />
             </div>
 

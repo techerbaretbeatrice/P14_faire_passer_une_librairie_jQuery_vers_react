@@ -11,18 +11,15 @@ const Search = (props) => {
         setInEdit(true)
     }
 
-    const onItemClick = (value) => {
+    const onItemClick = () => {
         setInEdit(false)
         setValue("")
     }
 
-
-
-
     return <><div className="research-container">
         <label className="label-container" htmlFor="research"> {engineLabel} </label>
         <div className="edit-container">
-            <input value={value} className="input-container" placeholder={enginePlaceholder} onChange={() => onInputChange()} ></input>
+            <input value={value} className="input-container" placeholder={enginePlaceholder} onChange={(evt) => onInputChange(evt.currentTarget.value)} ></input>
 
             {inEdit && <div className="icon-container"><XIcon onClick={() => onItemClick()} position="position" />
             </div>
