@@ -1,4 +1,5 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
+import DatePicker from "react-datepicker";
 import { DataContext } from "../../Context"
 import EmployeeObj from "../../Models"
 import AdressField from "../AdressField"
@@ -7,8 +8,12 @@ import SaveButton from "../SaveButton"
 import Select from "../Select"
 import "./style.css"
 
+import "react-datepicker/dist/react-datepicker.css";
+
 const Form = () => {
     const { addEmployee } = useContext(DataContext)
+    const [startDate, setStartDate] = useState(new Date());
+    const [dateOfBirth, setDateOfbirth] = useState(new Date());
     const handleSubmit = (evt) => {
         evt.preventDefault()
         const form = evt.currentTarget
@@ -16,10 +21,6 @@ const Form = () => {
         console.log(firstName)
         const lastName = form.lastname.value
         console.log(lastName)
-        const dateOfBirth = form.dateofbirth.value
-        console.log(dateOfBirth)
-        const startDate = form.startdate.value
-        console.log(startDate)
         const street = form.street.value
         console.log(street)
         const city = form.city.value
@@ -43,15 +44,44 @@ const Form = () => {
 
         })
         addEmployee(newEmployee)
+        form.reset()
     }
     return <div className="form-container">
         <form onSubmit={handleSubmit}>
             <InputForm inputLabel="First Name" inputName="firstname" inputType="text" />
             <InputForm inputLabel="Last Name" inputName="lastname" inputType="text" />
-            <InputForm inputLabel="Date of Birth" inputName="dateofbirth" inputType="date" />
-            <InputForm inputLabel="Start Date" inputName="startdate" inputType="date" />
-            <AdressField optionsList={["Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Ecuador", "Guyana", "Peru"]} selectorLabel="state" />
-            <Select selectorLabel="department" optionsList={["select dropdown", "Sales", "Marketing", "ingineering", "Legal"]} selectHeight="select-height" />
+            <div className="input-wrapper">
+                <label className="input-label">Date of Birth</label>
+                <div className="date-picker-container">
+                    <DatePicker dateFormat="dd/MM/yyyy" selected={dateOfBirth} onChange={(date) => setDateOfbirth(date)} />
+                </div>
+            </div>
+            <div className="input-wrapper">
+                <label className="input-label">Start Date</label>
+                <div className="date-picker-container">
+                    <DatePicker dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => setStartDate(date)} />
+                </div>
+            </div>
+            <AdressField
+                optionsList={{
+                    Argentina: "AR",
+                    Bolivia: "BO",
+                    Chile: "CHI",
+                    Colombia: "CO",
+                    Ecuador: "ECU",
+                    Guyana: "GU",
+                    Peru: "PE"
+                }
+                }
+                selectorLabel="state"
+            />
+            <Select selectorLabel="department" optionsList={{
+                "Sales": "Sales",
+                "Marketing": "Marketing",
+                "Engineering": "Engineering",
+                "Legal": "Legal"
+
+            }} selectHeight="select-height" />
             <SaveButton actionOnClick="Save" />
         </form>
     </div>

@@ -10,6 +10,9 @@ const listEmployee = () => {
 
 export const DataProvider = ({ children }) => {
     const [data, setData] = useState(listEmployee())
+    const [search, setSearch] = useState("")
+    const [numberPerPage, setNumberPerPage] = useState(10)
+    const [currentPage, setCurrentPage] = useState(1);
 
     const addEmployee = (employee) => {
         const list = listEmployee()
@@ -18,12 +21,15 @@ export const DataProvider = ({ children }) => {
         setData(list)
     }
 
-
-
-
     return <DataContext.Provider value={{
         list: data,
-        addEmployee
+        addEmployee,
+        setSearch,
+        search,
+        setNumberPerPage,
+        numberPerPage,
+        currentPage,
+        setCurrentPage,
     }} >
         {children}
     </DataContext.Provider >

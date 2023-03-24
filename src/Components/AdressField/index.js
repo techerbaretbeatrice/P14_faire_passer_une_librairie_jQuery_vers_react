@@ -11,7 +11,7 @@ const AdressField = (props) => {
                 <InputForm inputLabel="Street" inputName="street" inputType="text" />
                 <InputForm inputLabel="City" inputName="city" inputType="text" />
                 <Select selectorLabel={selectorLabel} optionsList={optionsList} selectHeight="select-height" />
-                <InputForm inputLabel="Zip Code" inputName="zipcode" inputType="text" />
+                <InputForm inputLabel="Zip Code" inputName="zipcode" inputType="number" />
             </div>
         </fieldset>
 

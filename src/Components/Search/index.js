@@ -2,24 +2,26 @@ import "./style.css"
 import { useState } from "react"
 
 const Search = (props) => {
-    const { engineLabel, enginePlaceholder } = props
+    const { engineLabel, enginePlaceholder, onSearch } = props
     const [value, setValue] = useState("")
     const [inEdit, setInEdit] = useState(false)
 
     const onInputChange = (value) => {
         setValue(value)
+        onSearch(value)
         setInEdit(true)
     }
 
     const onItemClick = () => {
-        setInEdit(false)
         setValue("")
+        onSearch("")
+        setInEdit(false)
     }
 
     return <><div className="research-container">
         <label className="label-container" htmlFor="research"> {engineLabel} </label>
         <div className="edit-container">
-            <input value={value} className="input-container" placeholder={enginePlaceholder} onChange={(evt) => onInputChange(evt.currentTarget.value)} ></input>
+            <input value={value} className="input-container" name="research" placeholder={enginePlaceholder} onChange={(evt) => onInputChange(evt.currentTarget.value)} ></input>
 
             {inEdit && <div className="icon-container"><XIcon onClick={() => onItemClick()} position="position" />
             </div>

@@ -1,6 +1,29 @@
+.pagination-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.current-page-view {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--PRIMARY-800);
+    margin-top: 10px;
+}
+
+.no-result {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 50px;
+    background-color: #fff;
+}
+
 .entry-parameter {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
+    align-items: center;
+    height: 50px;
 }

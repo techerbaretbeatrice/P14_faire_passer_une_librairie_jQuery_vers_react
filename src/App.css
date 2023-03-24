@@ -3,6 +3,7 @@ body {
   --PRIMARY-100: #e6f69e;
   --PRIMARY-600: #a5aa93;
   --PRIMARY-800: #585b4f;
+  width: 100%;
 }
 
 .App {

@@ -3,17 +3,21 @@
     flex-direction: row;
     width: 18%;
     justify-content: space-between;
+    min-width: 200px;
+    height: 100%;
 }
 
-.text-before {
+.text-style {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    color: var(--PRIMARY-800);
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .entry-values {
     width: 100px;
-}
-
-.a {
-    height: 30px;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }

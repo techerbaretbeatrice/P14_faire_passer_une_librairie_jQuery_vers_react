@@ -2,37 +2,18 @@ import "./style.css"
 import { useState } from "react"
 
 const Select = (props) => {
-    const { selectorLabel, optionsList, selectHeight } = props
+    const { selectorLabel, optionsList, selectHeight, onSelect = () => null } = props
     const [inEdit, setInEdit] = useState(false)
-    const [value, setValue] = useState(optionsList[0])
+    const [value, setValue] = useState(Object.entries(optionsList)[0][1])
+    const [selectedKey, setSelectedKey] = useState(Object.entries(optionsList)[0][0])
 
-    // Dans les props, j'ai 
-    // le label
-    // optionsList
 
-    // Input est focus, la liste s'ouvre
-    // Input est est plus focus, la liste se ferme
-    // on va changer l'etat (affiche/non affiche) de la liste avec les evenements onBlur et onFocus de l'input
-    // mais aussi au click sur une valeur de la liste
 
-    // La liste des valeurs est filtrée selon la valeur du champ input
-    // Par defaut la valeur par defaut de l'input est vide
-    // on stocke la valeur de l'input dans value
+    const onItemClick = (key, value) => {
+        onSelect(value)
+        setValue(value)
+        setSelectedKey(key)
 
-    // On stocke l'etat affiche/non affiche de la liste dans inEdit
-
-    // Quand on selectionne au click une valeur dans la liste, elle s'affiche dans l'input et la liste se referme
-    // On va modifier la valeur de value au click sur un item de la liste
-    // Le focus sur l'input est gardé
-
-    // On a besoin de faire 2 actions au click sur un item de la liste
-    // On va donc déclarer une fonction spécifique à déclencher au click : onItemClick, qui recevra
-    // la valeur de l'option et qui:
-    // fermera l'affichage de la liste
-    // et modifiera la valeur de l'input avec la valeur de l'option
-
-    const onItemClick = (optionValue) => {
-        setValue(optionValue)
         setInEdit(false)
     }
 
@@ -44,7 +25,7 @@ const Select = (props) => {
                 <button
                     className="selector"
                     onClick={() => setInEdit(!inEdit)}>
-                    {value}
+                    {selectedKey}
                 </button>
                 <input value={value} type="hidden" name={`${selectorLabel}`} />
                 <Arrow onClick={() => setInEdit(!inEdit)} />
@@ -53,14 +34,14 @@ const Select = (props) => {
             {inEdit && <div className="select-list">
 
                 {<ul className="list"> {
-                    optionsList.map(
-                        (option, index) => (
+                    Object.entries(optionsList).map(
+                        ([key, value], index) => (
                             <li
                                 className="option-item"
-                                label={`${option}`}
-                                key={`${option}-${index}`}
-                                onClick={() => onItemClick(option)}>
-                                {option}
+                                label={`${key}`}
+                                key={`${key}-${index}`}
+                                onClick={() => onItemClick(key, value)}>
+                                {key}
                             </li>
                         )
                     )

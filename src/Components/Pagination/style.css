@@ -1,0 +1,18 @@
+.pagination {
+    margin-top: 10px;
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-pagination {
+    width: 20px;
+    height: 20px;
+    background: var(--PRIMARY-600);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item-pagination:hover {
+    background: var(--PRIMARY);
+}
