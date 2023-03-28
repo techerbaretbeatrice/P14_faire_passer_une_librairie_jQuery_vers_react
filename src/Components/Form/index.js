@@ -5,10 +5,11 @@ import EmployeeObj from "../../Models"
 import AdressField from "../AdressField"
 import InputForm from "../InputForm"
 import SaveButton from "../SaveButton"
-import Select from "../Select"
+import { Select } from "b8ui"
 import "./style.css"
 
 import "react-datepicker/dist/react-datepicker.css";
+import "b8ui/dist/index.css"
 
 const Form = () => {
     const { addEmployee } = useContext(DataContext)
@@ -45,6 +46,9 @@ const Form = () => {
         })
         addEmployee(newEmployee)
         form.reset()
+        setStartDate(new Date())
+        setDateOfbirth(new Date())
+
     }
     return <div className="form-container">
         <form onSubmit={handleSubmit}>
@@ -63,7 +67,7 @@ const Form = () => {
                 </div>
             </div>
             <AdressField
-                optionsList={{
+                options={{
                     Argentina: "AR",
                     Bolivia: "BO",
                     Chile: "CHI",
@@ -73,9 +77,9 @@ const Form = () => {
                     Peru: "PE"
                 }
                 }
-                selectorLabel="state"
+                labelSelector="state"
             />
-            <Select selectorLabel="department" optionsList={{
+            <Select label="Departement" labelSelector="department" options={{
                 "Sales": "Sales",
                 "Marketing": "Marketing",
                 "Engineering": "Engineering",

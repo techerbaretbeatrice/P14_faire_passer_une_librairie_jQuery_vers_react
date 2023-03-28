@@ -62,3 +62,7 @@ select {
 .react-datepicker__input-container {
     width: 100%;
 }
+
+.form-container .select-border {
+    --PRIMARY-600: #a5aa93;
+}

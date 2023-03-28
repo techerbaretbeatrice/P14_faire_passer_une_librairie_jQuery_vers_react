@@ -21,3 +21,11 @@
     align-items: center;
     height: 100%;
 }
+
+.entry-select-container .select-border {
+    --PRIMARY-600: #a5aa93;
+}
+
+.entry-select-container .select-container {
+    margin-bottom: 0;
+}

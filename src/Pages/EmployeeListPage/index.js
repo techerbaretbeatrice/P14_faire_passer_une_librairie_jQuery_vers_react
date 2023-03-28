@@ -52,7 +52,10 @@ const EmployeeListPage = () => {
             </div>
             <div className="entry-parameter">
                 <EntrySelect textBefore="Show" textAfter="entries" onSelect={setNumberPerPage} />
-                <Search engineLabel=" search:" onSearch={setSearch} enginePlaceholder="search" />
+                <Search engineLabel=" search:" onSearch={(value) => {
+                    setSearch(value)
+                    setCurrentPage(1)
+                }} enginePlaceholder="search" />
             </div>
 
             <DataTable
@@ -86,6 +89,7 @@ const EmployeeListPage = () => {
                     {
                         filteredList.length < list.length && <span>{`(filtered from ${list.length} total entries)`}</span>
                     }
+
                 </div>
                 <Pagination onChange={setCurrentPage} numberPerPage={numberPerPage} totalNumber={filteredList.length} />
             </div>
