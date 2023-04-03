@@ -8,41 +8,40 @@ import { DataContext } from "../../Context"
 import Pagination from "../../Components/Pagination"
 
 
+const formatDate = (date) => {
+    if (!(date instanceof Date)) return ""
+    const day = date.getDate()
+    const month = date.getMonth() + 1
+    const year = date.getFullYear()
+    return `${String(day).length === 2 ? day : "0" + day}/${String(month).length === 2 ? month : "0" + month}/${year}`
+}
+
 
 const EmployeeListPage = () => {
     const { list, setSearch, search, numberPerPage, setNumberPerPage, currentPage, setCurrentPage } = useContext(DataContext)
 
-
+    //allows to filter employee List by using the letters types in the engine
     const filter = (item) => {
-
-        return item.firstname?.toLowerCase().includes(search)
-            || item.lastname?.toLowerCase().includes(search)
-            || item.street?.toLowerCase().includes(search)
-            || item.city?.toLowerCase().includes(search)
-            || item.state?.toLowerCase().includes(search)
-            || item.zipcode?.toLowerCase().includes(search)
+        const searchWord = search.toLowerCase()
+        return item.firstname?.toLowerCase().includes(searchWord)
+            || item.lastname?.toLowerCase().includes(searchWord)
+            || item.street?.toLowerCase().includes(searchWord)
+            || item.city?.toLowerCase().includes(searchWord)
+            || item.state?.toLowerCase().includes(searchWord)
+            || item.department?.toLowerCase().includes(searchWord)
+            || item.zipcode?.toLowerCase().includes(searchWord)
+            || (item.dateofbirth && formatDate(new Date(item.dateofbirth)).includes(searchWord))
+            || (item.startdate && formatDate(new Date(item.startdate)).includes(searchWord))
 
     }
 
-
-
-
-
-
-
+    // filtered list
     const filteredList = list.filter(filter)
-    console.log(filteredList)
-
 
     const startIndex = filteredList.length > 0 ? (numberPerPage * (currentPage - 1)) + 1 : 0
     const stopIndex = numberPerPage * currentPage > filteredList.length ? filteredList.length : numberPerPage * currentPage
 
-    const formatDate = (date) => {
-        const day = date.getDate()
-        const month = date.getMonth() + 1
-        const year = date.getFullYear()
-        return `${String(day).length === 2 ? day : "0" + day}/${String(month).length === 2 ? month : "0" + month}/${year}`
-    }
+
 
     return <div>
         <Header />

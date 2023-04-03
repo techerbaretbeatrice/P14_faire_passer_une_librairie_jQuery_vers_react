@@ -1,4 +1,14 @@
 import "./style.css"
+import PropTypes from "prop-types"
+
+/**
+ * Represents a component which permitted two action on click, the arrow clicked is actived. 
+ * @param {function} props - onUp
+ * @param {function} props - onDown
+ * @param {function} props - isUpActive
+ * @param {function} props - isDownActive
+ * @returns {JSX.Element}
+ */
 
 const UpAndDownArrows = (props) => {
     const { onUp, onDown, isUpActive, isDownActive } = props
@@ -25,5 +35,14 @@ const Arrow = (props) => (
         />
     </svg>
 );
+
+UpAndDownArrows.propTypes = {
+    onUp: PropTypes.func.isRequired,
+    onDown: PropTypes.func.isRequired,
+    isUpActive: PropTypes.bool.isRequired,
+    isDownActive: PropTypes.bool.isRequired,
+}
+
+
 
 export default UpAndDownArrows

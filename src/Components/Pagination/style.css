@@ -8,6 +8,7 @@
 .item-pagination {
     width: 20px;
     height: 20px;
+    margin-left: 5px;
     background: var(--PRIMARY-600);
     border-radius: 5px;
     cursor: pointer;

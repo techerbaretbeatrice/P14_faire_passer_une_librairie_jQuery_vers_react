@@ -18,9 +18,4 @@ const SaveButton = (props) => {
 
 }
 
-/**
- * La responsabilité du composant est multiple
- * c'est un bouton qui ouvre une modal de confirmation
- */
-
 export default SaveButton

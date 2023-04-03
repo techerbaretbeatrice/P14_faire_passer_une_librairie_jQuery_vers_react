@@ -1,3 +1,6 @@
+/**
+ * Pattern constructor : normalize employee data
+ */
 export default class EmployeeObj {
     constructor(data) {
         this.id = data.id

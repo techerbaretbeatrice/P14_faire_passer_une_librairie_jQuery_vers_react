@@ -7,9 +7,13 @@ import InputForm from "../InputForm"
 import SaveButton from "../SaveButton"
 import { Select } from "b8ui"
 import "./style.css"
-
 import "react-datepicker/dist/react-datepicker.css";
 import "b8ui/dist/index.css"
+
+/**
+ * Represents a form 
+ * @returns {JSX.Element}
+ */
 
 const Form = () => {
     const { addEmployee } = useContext(DataContext)
@@ -19,19 +23,12 @@ const Form = () => {
         evt.preventDefault()
         const form = evt.currentTarget
         const firstName = form.firstname.value
-        console.log(firstName)
         const lastName = form.lastname.value
-        console.log(lastName)
         const street = form.street.value
-        console.log(street)
         const city = form.city.value
-        console.log(city)
         const state = form.state.value
-        console.log(state)
         const zipCode = form.zipcode.value
-        console.log(zipCode)
         const department = form.department.value
-        console.log(department)
         const newEmployee = new EmployeeObj({
             firstname: firstName,
             lastname: lastName,
@@ -68,13 +65,18 @@ const Form = () => {
             </div>
             <AdressField
                 options={{
-                    Argentina: "AR",
-                    Bolivia: "BO",
-                    Chile: "CHI",
-                    Colombia: "CO",
-                    Ecuador: "ECU",
-                    Guyana: "GU",
-                    Peru: "PE"
+                    Alabama: "AL",
+                    Alaska: "AK",
+                    "American Samoa": "AS",
+                    Arizona: "AZ",
+                    Arkansas: "AR",
+                    California: "CA",
+                    Colorado: "CO",
+                    Connecticut: "CT",
+                    Delaware: "DE",
+                    "District of Comlumbia": "DC",
+                    Florida: "FL",
+                    Georgia: "GA",
                 }
                 }
                 labelSelector="state"
@@ -83,7 +85,8 @@ const Form = () => {
                 "Sales": "Sales",
                 "Marketing": "Marketing",
                 "Engineering": "Engineering",
-                "Legal": "Legal"
+                "Legal": "Legal",
+                "Human Resources": "Human Resources"
 
             }} selectHeight="select-height" />
             <SaveButton actionOnClick="Save" />

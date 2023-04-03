@@ -2,9 +2,29 @@
 import "./style.css"
 import UpAndDownArrows from "../UpAndDownArrows/index "
 import { useState } from "react"
+import PropTypes from "prop-types"
+
+/**
+ * Represents a row in the datatable body
+ * @param {Array} keys - Array from keys to identifiate cells in the row 
+ * @returns datas in the row in datatable body
+ */
 
 const Row = ({ row, keys }) => keys.map((key) => <td className="row-cell" key={key}>{row[key]}</td>)
 
+/**
+ * Represent the datatable component
+ * @param {array} props - tableList 
+ * @param {array} props - keys
+ * @param {number} props - currentPage
+ * @param {number} props - numberPerPage 
+ * @param {string} props - defaultSortKey
+ * @param {string} props - defaultSortOrder
+ * @param {object} props - dataKeys
+ * @param {JSX.Element} props - emptyElement
+ * @param {Function} props - format
+ * @returns {JSX.Element} datatable  displays a list of rows which can be ordered in a ascendant or a descendant way
+ */
 const DataTable = (props) => {
     const {
         tableList,
@@ -17,18 +37,10 @@ const DataTable = (props) => {
         emptyElement,
         format = (item) => item,
     } = props
-    console.log(tableList)
     const [sortKey, setSortKey] = useState(defaultSortKey)
     const [sortOrder, setSortOrder] = useState(defaultSortOrder)
 
     const paginate = (item, index) => {
-        // avec le nombre par page, et le numero de page, savoir quel index sera sur la page
-        // page = 1, nb par page = 5 => 0,1,2,3,4 nombres plus petit que 5 x 1 et plus grand ou egal à 5 x 0
-        // page = 2, nb par page = 5 => 5,6,7,8,9 nombres plus petit que 5 x 2 et plus grand ou egal à 5 x 1
-        // page = 3, nb par page = 5 => 10,11,12,13,14 nombres plus petit que 5 x 3 et plus grand ou egal à 5 x 2
-        // => si on remplace par les variables => nombre plus petit que numberPerPage x currentPage et plus grand ou egal à numberPerPage x (currentPage-1)
-        // page = 1, nb par page = 10 => 0,1,2,3,4,5,6,7,8,9
-        // page = 2, nb par page = 10 => 10,11,12,13,14,15,16,17,18,19
         if (index < numberPerPage * currentPage && index >= numberPerPage * (currentPage - 1)) return true
     }
 
@@ -91,6 +103,18 @@ const DataTable = (props) => {
             </tbody>
         </table>
     </div>
+}
+
+DataTable.propTypes = {
+    tableList: PropTypes.array.isRequired,
+    keys: PropTypes.array.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    numberPerPage: PropTypes.number.isRequired,
+    defaultSortKey: PropTypes.string.isRequired,
+    defaultSortOrder: PropTypes.string.isRequired,
+    dataKeys: PropTypes.object.isRequired,
+    format: PropTypes.func.isRequired,
+
 }
 
 export default DataTable

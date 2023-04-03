@@ -1,5 +1,14 @@
 import "./style.css"
 import { useState } from "react"
+import PropTypes from "prop-types"
+
+/**
+ * Represesents a search engine 
+ * @param {string} props - engineLabel
+ * @param {string} props - enginePlaceholder
+ * @param {func} props - onSearch
+ * @returns {JSX.Element}
+ */
 
 const Search = (props) => {
     const { engineLabel, enginePlaceholder, onSearch } = props
@@ -47,5 +56,10 @@ const XIcon = (props) => (
     </svg>
 );
 
+Search.propTypes = {
+    engineLabel: PropTypes.string,
+    enginePlaceholder: PropTypes.string,
+    onSearch: PropTypes.func,
+}
 
 export default Search
